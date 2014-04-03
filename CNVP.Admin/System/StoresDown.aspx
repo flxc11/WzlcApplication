@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StoresDown.aspx.cs" Inherits="CNVP.Admin.StoresDown" %>

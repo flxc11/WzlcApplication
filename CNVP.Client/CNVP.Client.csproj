@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4583F8C8-E4DE-4F28-BA47-D97E9883C63C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CNVP.Client</RootNamespace>
+    <AssemblyName>CNVP.Client</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ajax.aspx" />
+    <Content Include="CarList.aspx" />
+    <Content Include="CartList.aspx" />
+    <Content Include="App_Data\Product.mdb" />
+    <Content Include="Css\Global.css" />
+    <Content Include="Css\Layout.css" />
+    <Content Include="Css\Option.css" />
+    <Content Include="Css\ScrollBar.css" />
+    <Content Include="Css\ThickBox.css" />
+    <Content Include="GroupInfo.aspx" />
+    <Content Include="GroupList.aspx" />
+    <Content Include="Images\AddCart.png" />
+    <Content Include="Images\Addition.png" />
+    <Content Include="Images\Ajax-Loader.gif" />
+    <Content Include="Images\BackBtn.png" />
+    <Content Include="Images\BottomLogo.png" />
+    <Content Include="Images\BtnSearch.png" />
+    <Content Include="Images\CartHeaderBg.png" />
+    <Content Include="Images\Close.png" />
+    <Content Include="Images\CloseIcon.jpg" />
+    <Content Include="Images\CloseIcon1.jpg" />
+    <Content Include="Images\CX.png" />
+    <Content Include="Images\CX1.png" />
+    <Content Include="Images\Decrease.png" />
+    <Content Include="Images\GWC.png" />
+    <Content Include="Images\GWC1.png" />
+    <Content Include="Images\HeaderBg.png" />
+    <Content Include="Images\IndexBg.png" />
+    <Content Include="Images\IndexLogo.png" />
+    <Content Include="Images\InputSearch.png" />
+    <Content Include="Images\JP.png" />
+    <Content Include="Images\JP1.png" />
+    <Content Include="Images\LeftBtn.png" />
+    <Content Include="Images\Loading.gif" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\MenuBg.png" />
+    <Content Include="Images\Nav.png" />
+    <Content Include="Images\Nav_Thumbs.png" />
+    <Content Include="Images\NoImages.jpg" />
+    <Content Include="Images\OrderBtn.png" />
+    <Content Include="Images\Pattern.png" />
+    <Content Include="Images\ProductLine.png" />
+    <Content Include="Images\Pull-Icon%402x.png" />
+    <Content Include="Images\RightBtn.png" />
+    <Content Include="Images\TC.png" />
+    <Content Include="Images\TC1.png" />
+    <Content Include="Images\TYJ.png" />
+    <Content Include="Images\TYJ1.png" />
+    <Content Include="Images\TypeBg.png" />
+    <Content Include="Images\TypeBottom.png" />
+    <Content Include="Images\TypeTop.png" />
+    <Content Include="Images\Views.png" />
+    <Content Include="Index.html" />
+    <Content Include="Js\Common.js" />
+    <Content Include="Js\Gallery.js" />
+    <Content Include="Js\IScroll.js" />
+    <Content Include="Js\JQuery.Easing.1.3.js" />
+    <Content Include="Js\JQuery.ElastiSlide.js" />
+    <Content Include="Js\JQuery.js" />
+    <Content Include="Js\JQuery.Tmpl.js" />
+    <Content Include="Js\MSClass.js" />
+    <Content Include="Js\Option.js" />
+    <Content Include="Js\ThickBox.js" />
+    <Content Include="ProductImages.aspx" />
+    <Content Include="ProductInfo.aspx" />
+    <Content Include="ProductList.aspx" />
+    <Content Include="Index.aspx" />
+    <Content Include="TypeList.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ajax.aspx.cs">
+      <DependentUpon>Ajax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajax.aspx.designer.cs">
+      <DependentUpon>Ajax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarList.aspx.cs">
+      <DependentUpon>CarList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarList.aspx.designer.cs">
+      <DependentUpon>CarList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CartList.aspx.cs">
+      <DependentUpon>CartList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartList.aspx.designer.cs">
+      <DependentUpon>CartList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AppList.cs" />
+    <Compile Include="Data\CartItem.cs" />
+    <Compile Include="Data\CarType.cs" />
+    <Compile Include="Data\Group.cs" />
+    <Compile Include="Data\Product.cs" />
+    <Compile Include="Data\ProductDetail.cs" />
+    <Compile Include="Data\Type.cs" />
+    <Compile Include="GroupInfo.aspx.cs">
+      <DependentUpon>GroupInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupInfo.aspx.designer.cs">
+      <DependentUpon>GroupInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GroupList.aspx.cs">
+      <DependentUpon>GroupList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GroupList.aspx.designer.cs">
+      <DependentUpon>GroupList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductImages.aspx.cs">
+      <DependentUpon>ProductImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductImages.aspx.designer.cs">
+      <DependentUpon>ProductImages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInfo.aspx.cs">
+      <DependentUpon>ProductInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductInfo.aspx.designer.cs">
+      <DependentUpon>ProductInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductList.aspx.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductList.aspx.designer.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeList.aspx.cs">
+      <DependentUpon>TypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TypeList.aspx.designer.cs">
+      <DependentUpon>TypeList.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UploadFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CNVP.Cache\CNVP.Cache.csproj">
+      <Project>{2921B4E7-370B-49AD-9291-EE8E3CB480DA}</Project>
+      <Name>CNVP.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNVP.Config\CNVP.Config.csproj">
+      <Project>{C4B44886-5129-4064-A7DE-443B129BE496}</Project>
+      <Name>CNVP.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNVP.Data\CNVP.Data.csproj">
+      <Project>{4869258E-1B35-4127-B31D-A3036DEFA6C9}</Project>
+      <Name>CNVP.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNVP.Framework\CNVP.Framework.csproj">
+      <Project>{F2B9B65B-AB39-4DE2-8C72-62FB6B39BA22}</Project>
+      <Name>CNVP.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNVP.Model\CNVP.Model.csproj">
+      <Project>{52FDEB0D-1B41-46DF-B902-D178D825061A}</Project>
+      <Name>CNVP.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNVP.UI\CNVP.UI.csproj">
+      <Project>{961186B9-1A60-432C-A519-FEC34726427F}</Project>
+      <Name>CNVP.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\CNVP.CMS.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1431</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
