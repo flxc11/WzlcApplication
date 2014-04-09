@@ -1,0 +1,120 @@
+/*************************************************
+  Description:	操作页样式，list.css
+  History：             
+				曾光		2007-2-7
+*************************************************/
+/*************************************************
+  表格
+.opr_head			导航
+.opr_tb				主表格
+.opr_tr				行
+.opr_td				单元格
+.opr_left_td		左单元格
+opr_center_td		中单元格
+opr_right_td		右单元格
+*************************************************/
+.opr_head {
+	background-color: #eff7ff;
+	border: 1px solid #94c3f7;
+	padding: 3px 3px 3px 10px;
+}
+.opr_tb {
+	color: #000000;
+}
+.opr_tr {
+	color: #000000;
+}
+.opr_td {
+	color: #000000;
+}
+.opr_left_td {
+	color: #000000;
+	background-color: #f4f8ff;
+	padding-right: 3px;
+}
+.opr_center_td {
+	color: #000000;
+}
+.opr_right_td {
+	color: #aaaaaa;
+	background-color: #ffffff;
+	padding-left: 10px;
+}
+/*************************************************
+  表单
+.imp				输入1
+.input_text			输入2
+.input_date_text	日期输入
+.input_select		下拉
+.input_textarea		输入域
+.btn_ok				确定
+.btn_cancel			取消
+.btn_reset			重置
+*************************************************/
+.imp {
+	background-color:#ffffff;
+	border:1px solid #B0CFEE;
+	height:20px;
+}
+.input_text {
+	background-color:#ffffff;
+	border:1px solid #B0CFEE;
+	height:18px;
+}
+.input_date_text {
+	font-size: 9pt;
+	border-bottom: #7b85b8 1px solid;
+	border-left: #7b85b8 1px solid;
+	border-right: #7b85b8 1px solid;
+	border-top: #7b85b8 1px solid;
+	height: 20px;
+	cursor: hand
+}
+.input_select {
+	font-size: 9pt;
+	background: #f3f4f9;
+}
+.input_textarea {
+	border: 1px solid #a4cdf2;
+	background: #fcfdfd;
+	font-family: Tahoma, 宋体, Courier, Helvetica, sans-serif;
+	z-index: -3;
+	font-size: 12px
+}
+.btn_reset {
+	border: solid 1px #cccccc;
+	background: #E9ECEF;
+	color: #666666;
+	font-weight: bold;
+	font-size: 12px;
+}
+.btn_ok,.btn_cancel {
+	color: #2b333c;
+	height:22px;
+	padding-top:1px;
+	font-size:9pt;
+	cursor:hand;
+}
+.btn_ok,.btn_ok-disabled,.btn_cancel,.btn_cancel-disabled {
+	background: #fefefe repeat-x;
+	border: 3px double;
+	border-color: #c4cccc #acb5b5 #6f7777 #acb5b5;
+}
+.btn_ok:hover,.btn_ok:focus,.btn_cancel:hover,.btn_cancel:focus  {
+	border: 3px double;
+	border-color: #FFB59B #FF8E68 #ff6c3e #FF8E68;
+}
+.btn_ok:visited,.btn_cancel:visited {
+	color: #2b333c;
+}
+html>body input.btn_ok-disabled,html>body input.btn_ok-disabled:hover,html>body input.btn_ok-disabled:focus,
+html>body input.btn_cancel-disabled,html>body input.btn_cancel-disabled:hover,html>body input.btn_cancel-disabled:focus
+	{
+	color: #8A8E92;
+	background-color: #f2f2f2;
+	border: 3px double;
+	border-color: #c4cccc #acb5b5 #6f7777 #acb5b5;
+}
+.btn_arrow{
+	width: 16px;height: 9px;line-height: 2px;padding-left: 2px;cursor:hand;
+}
