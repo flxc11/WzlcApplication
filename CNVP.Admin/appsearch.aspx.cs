@@ -47,7 +47,7 @@ namespace CNVP.Admin
                 }
                 else
                 {
-                    MessageUtils.ShowRedirect("用户不存在，请先注册！", "AppReg.aspx");
+                    Response.Redirect("AppReg.aspx");
                 }
             }
             else

@@ -51,6 +51,9 @@ namespace CNVP.Admin.Appli
                     case "GetAppInfo":
                         GetAppInfo();
                         break;
+                    case "GetList":
+                        GetList();
+                        break;
                 }
             }
         }
@@ -69,11 +72,11 @@ namespace CNVP.Admin.Appli
             }
             int RecordCount, PageCount;
             string StrWhere = "" + DbConfig.Prefix + "Application As B INNER JOIN " + DbConfig.Prefix + "AppliUsers As A ON B.AppUserID=A.ID ";
-            DataTable dt = DbHelper.ExecutePage("B.ID as BID,A.ID,A.AppName,B.AppType,B.PostTime,B.IsAudit,B.AppContent,B.AppReply, B.PostTime,B.AppThings", StrWhere, "B.ID", "Order By B.PostTime Desc", Convert.ToInt32(PageNo), Convert.ToInt32(PageSize), out RecordCount, out PageCount);
+            DataTable dt = DbHelper.ExecutePage("B.ID as BID,A.ID,A.AppName,B.AppType,B.PostTime,B.IsAudit,B.AppContent,B.AppReply, B.PostTime,B.AppThings,B.AuditMan", StrWhere, "B.ID", "Order By B.PostTime Desc", Convert.ToInt32(PageNo), Convert.ToInt32(PageSize), out RecordCount, out PageCount);
             StringBuilder SB = new StringBuilder();
             foreach (DataRow Row in dt.Rows)
             {
-                SB.Append("{\"ID\":\"" + Row["BID"] + "\",\"AppName\":\"" + Row["AppName"] + "\",\"AppType\":\"" + Row["AppType"] + "\",\"AppThings\":\"" + GetAppType(Row["AppThings"].ToString()) + "\",\"PostTime\":\"" + Convert.ToDateTime(Row["PostTime"]).ToString("yyyy-MM-dd") + "\",\"IsAudit\":\"" + Row["IsAudit"] + "\",\"AppReply\":\"" + Row["AppReply"] + "\"},");
+                SB.Append("{\"ID\":\"" + Row["BID"] + "\",\"AppName\":\"" + Row["AppName"] + "\",\"AppType\":\"" + Row["AppType"] + "\",\"AppThings\":\"" + GetAppType(Row["AppThings"].ToString()) + "\",\"PostTime\":\"" + Convert.ToDateTime(Row["PostTime"]).ToString("yyyy-MM-dd") + "\",\"IsAudit\":\"" + Row["IsAudit"] + "\",\"AuditMan\":\"" + Row["AuditMan"] + "\",\"AppReply\":\"" + Row["AppReply"] + "\"},");
             }
             string ReturnStr = SB.ToString();
             if (!string.IsNullOrEmpty(ReturnStr))
@@ -206,5 +209,64 @@ namespace CNVP.Admin.Appli
             }
             return str;
         }
+
+        #region 搜素列表
+        public void GetList()
+        {
+            string TypeID = Request.Params["TypeID"];
+            string StartTime = Request.Params["StartTime"];
+            string EndTime = Request.Params["EndTime"];
+            string IsAudit = Request.Params["IsAudit"];
+            string Rslt = Request.Params["Rslt"];
+            string AuditMan = Request.Params["AuditMan"];
+
+            string PageNo = Request.Params["Page"];
+            if (string.IsNullOrEmpty(PageNo) || (!Public.IsNumber(PageNo)))
+            {
+                PageNo = "1";
+            }
+            string PageSize = Request.Params["PageSize"];
+            if (string.IsNullOrEmpty(PageNo) || (!Public.IsNumber(PageNo)))
+            {
+                PageSize = "20";
+            }
+            int RecordCount, PageCount;
+            string StrWhere = "" + DbConfig.Prefix + "Application As B INNER JOIN " + DbConfig.Prefix + "AppliUsers As A ON B.AppUserID=A.ID Where 1=1 ";
+            if (!string.IsNullOrEmpty(TypeID) && TypeID != "undefined")
+            {
+                StrWhere += " and B.TypeID='" + TypeID + "'";
+            }
+            if (!string.IsNullOrEmpty(StartTime) && !string.IsNullOrEmpty(EndTime))
+            {
+                StrWhere += " and B.PostTime between '" + StartTime + "' and '" + EndTime + "'";
+            }
+            if (!string.IsNullOrEmpty(IsAudit) && IsAudit != "undefined")
+            {
+                StrWhere += " and B.IsAudit='" + IsAudit + "'";
+            }
+            if (!string.IsNullOrEmpty(Rslt) && Rslt != "undefined")
+            {
+                StrWhere += " and B.AppResult='" + Rslt + "'";
+            }
+            if (!string.IsNullOrEmpty(AuditMan))
+            {
+                StrWhere += " and B.AuditMan='" + AuditMan + "'";
+            }
+            DataTable dt = DbHelper.ExecutePage("B.ID as BID,A.ID,A.AppName,B.AppType,B.PostTime,B.IsAudit,B.AppContent,B.AppReply, B.PostTime,B.AppThings,B.AuditMan", StrWhere, "B.ID", "Order By B.PostTime Desc", Convert.ToInt32(PageNo), Convert.ToInt32(PageSize), out RecordCount, out PageCount);
+            StringBuilder SB = new StringBuilder();
+            foreach (DataRow Row in dt.Rows)
+            {
+                SB.Append("{\"ID\":\"" + Row["BID"] + "\",\"AppName\":\"" + Row["AppName"] + "\",\"AppType\":\"" + Row["AppType"] + "\",\"AppThings\":\"" + GetAppType(Row["AppThings"].ToString()) + "\",\"PostTime\":\"" + Convert.ToDateTime(Row["PostTime"]).ToString("yyyy-MM-dd") + "\",\"IsAudit\":\"" + Row["IsAudit"] + "\",\"AuditMan\":\"" + Row["AuditMan"] + "\",\"AppReply\":\"" + Row["AppReply"] + "\"},");
+            }
+            string ReturnStr = SB.ToString();
+            if (!string.IsNullOrEmpty(ReturnStr))
+            {
+                ReturnStr = ReturnStr.Substring(0, ReturnStr.Length - 1);
+            }
+            Response.Write("{\"Rows\":[" + ReturnStr + "],\"Total\":\"" + RecordCount + "\"}");
+            Response.End();
+
+        }
+        #endregion
     }
 }

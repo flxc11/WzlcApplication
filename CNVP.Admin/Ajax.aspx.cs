@@ -32,9 +32,6 @@ namespace CNVP.Admin
                     case "index_type":
                         Index_type();
                         break;
-                    case "Sms1":
-                        SendSms1();
-                        break;
                 }
                 Response.End();
             }
@@ -119,17 +116,15 @@ namespace CNVP.Admin
             Response.End();
         }
 
-        public void SendSms1()
+        public string SendSms1(string UserPhone, string Content)
         {
-            string userPhone = Public.FilterSql(Request.Params["UserPhone"]);
+            string userPhone = UserPhone;
             string[] SmsPhone = new string[] { userPhone };
             string SerialNum = "3SDK-EMY-0130-JCXMM";
             string key = "cnvp";
             long unknow = Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            string SmsContent = "您好！鹿城档案地方志网的管理员，有一项新的查调申请，请及时处理！退订回复TD【鹿城档案地方志网】";
-            //return Ajax.CreateService().sendSMS(SerialNum, key, "", SmsPhone, SmsContent, "", "", 5, unknow).ToString();
-            Response.Write("{\"rslt\":\"" + Ajax.CreateService().sendSMS(SerialNum, key, "", SmsPhone, SmsContent, "", "", 5, unknow) + "\"}");
-            Response.End();
+            string SmsContent = Content;
+            return Ajax.CreateService().sendSMS(SerialNum, key, "", SmsPhone, SmsContent, "", "", 5, unknow).ToString();
         }
 
         public string SendSms2(string UserPhone)

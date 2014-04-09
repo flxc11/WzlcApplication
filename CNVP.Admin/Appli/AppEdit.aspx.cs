@@ -24,11 +24,13 @@ namespace CNVP.Admin.Appli
                     CurrentID = Request.Params["AppID"];
                     string AppReply = Request.Params["AppReply"];
                     string _IsAudit = Request.Params["IsAudit"];
+                    string IsMeg = Request.Params["IsAudit"];
                     Data.Application bll1 = new Data.Application();
                     Model.Application model1 = new Model.Application();
                     model1.ID = Convert.ToInt32(CurrentID);
                     model1.IsAudit = _IsAudit;
                     model1.AppReply = AppReply;
+                    model1.AuditMan = UserName;
                     string IsSms = Request.Params["IsSms"];
                     string _userPhone = Request.Params["AppPhone"];
                     string _userName = Request.Params["AppName"];
@@ -46,19 +48,26 @@ namespace CNVP.Admin.Appli
                         {
                             _rlt = "审核未通过";
                         }
+                        string _content = _userName + " 您好，您在 " + _n_PostTime + " 申请的 " + _type + " 查调事项的申请结果为 " + _rlt + " ,管理员回复：" + AppReply + "！退订回复TD【鹿城档案地方志网】";
+                        if (_ajax.SendSms1(_userPhone, _content) == "0")
+                        {
+                            bll1.AppReply(model1);
+                            Response.Write("<script>var win = parent || window;win.LG.closeAndReloadParent(null, 'Applist');</script>");
+                            Response.End();
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('回复失败!');var win = parent || window;win.LG.closeAndReloadParent(null, 'Applist');</script>");
+                            Response.End();
+                        }
                     }
-                    string _content = _userName + " 您好，您在 " + _n_PostTime + " 申请的 " + _type + " 查调事项的申请结果为 " + _rlt + " ,管理员回复：" + AppReply + "！退订回复TD【鹿城档案地方志网】";
-                    if (_ajax.SendSms2(_userPhone) == "0")
+                    else
                     {
                         bll1.AppReply(model1);
                         Response.Write("<script>var win = parent || window;win.LG.closeAndReloadParent(null, 'Applist');</script>");
                         Response.End();
                     }
-                    else
-                    {
-                        Response.Write("<script>alert('回复失败!');var win = parent || window;win.LG.closeAndReloadParent(null, 'Applist');</script>");
-                        Response.End();
-                    }
+                    
                 }
                 CurrentID = Request.Params["ID"];
                 if (string.IsNullOrEmpty(CurrentID) || (!Public.IsNumber(CurrentID)))

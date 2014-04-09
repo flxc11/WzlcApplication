@@ -111,9 +111,10 @@
                 <textarea name="AppContent" class="input" id="AppContent" style="width:270px;height:100px;overflow:hidden;"></textarea>
             </div>
             <div class="field">
-                <label for="name">结果需求：</label>
-                <input type="radio" name="app_result" value="0" id="" checked="checked" />邮件
-                <input type="radio" name="app_result" value="1" id="" />快递（到付）
+                <label for="name" style="height:50px;">结果需求：</label>
+                <input type="radio" name="app_result" value="0" id="" checked="checked" />仅需档案扫描件发送到邮箱：（填写EMAIL地址、默认登记的EMAIL）<br />
+                <input type="radio" name="app_result" value="1" id="" />需提供档案凭证，请快递到（填定快递地址，并注明快递费到付）
+
             </div>
             <div class="field" id="pic1">
                 <span class="red">*</span>
@@ -210,6 +211,11 @@
             //    $("#CheckCode").focus();
             //    return false;
             //}
+            if ($("#AppType").val() == 0) {
+                alert("请选择档案类型！");
+                $("#AppType").focus();
+                return false;
+            }
             if (/^\s*$/.test($("#AppContent").val())) {
                 alert("请输入申请事项！");
                 $("#AppContent").focus();

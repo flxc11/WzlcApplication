@@ -37,12 +37,13 @@
 </div>
 </div>
 <script type="text/javascript">
+    var action = "list";
     var layout = $("#layout").ligerLayout({ leftWidth: 220, allowLeftCollapse: false });
     $(".l-layout-left").css("overflow", "auto");
     var toolbarOptions = {
         items: [
-                //{ text: '查找', click: itemclick, img: "../lib/icons/silkicons/briefcase.png" },
-                //{ line: true },
+                { text: '查找', click: itemclick, img: "../lib/icons/silkicons/briefcase.png" },
+                { line: true },
                 { text: '移除', click: itemclick, img: "../lib/icons/miniicons/icon_monitor_pc.gif" }
         ]
     };
@@ -74,19 +75,22 @@
                         }
                     }
                 },
-                { display: '管理员回复', name: 'AppReply', align: 'center', width: 150, minWidth: 60 }
-
+                { display: '管理员回复', name: 'AppReply', align: 'center', width: 150, minWidth: 60 },
+                { display: '审核人', name: 'AuditMan', align: 'center', width: 150, minWidth: 60 }
         ], dataAction: 'server', pageSize: 20, toolbar: toolbarOptions, sortName: 'ID',
         width: '100%', height: '100%', heightDiff: -5, url: 'List.aspx?Action=AppList', checkbox: true, usePager: true,whenRClickToSelect: true, fixedCellHeight: true, rowHeight: 25,
         onDblClickRow: f_onDblClickRow
     });
-
+    function f_onLoadProduct1(TypeID, StartTime, EndTime, IsAudit, Rslt, AuditMan) {
+        grid.set('parms', { Action: 'GetList', TypeID: TypeID, StartTime: StartTime, EndTime: EndTime, IsAudit: IsAudit, Rslt: Rslt, AuditMan: AuditMan });
+        grid.set('url', 'List.aspx');
+    }
     function itemclick(item) {
         var rows = grid.getCheckedRows();
         var selected = grid.getSelected();
         switch (item.text) {
             case "查找":
-                showTB('Product/ProductListSearch.aspx?Type=' + action, 300, 120, '查找精品', 'parent');
+                showTB('Appli/AppListSearch.aspx?Type=' + action, 400, 450, '查找申请', 'parent');
                 break;
             case "移除":
                 if (selected != null) {

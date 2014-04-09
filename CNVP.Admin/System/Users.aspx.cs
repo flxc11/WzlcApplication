@@ -204,9 +204,9 @@ namespace CNVP.Admin
         /// </summary>
         private void AddUserInfo()
         {
-            string AppID = Request.Params["AppID"];
+            string AppID = "1";
             string RoleID = Request.Params["RoleID"];
-            string IsAdmin = Request.Params["IsAdmin"];
+            string IsAdmin = "1";
             string LoginName = Request.Params["LoginName"];
             string UserPass = Request.Params["UserPass"];
             string UserTrueName = Request.Params["UserTrueName"];
@@ -251,9 +251,9 @@ namespace CNVP.Admin
         private void EditUserInfo()
         {
             string UserID = Request.Params["UserID"];
-            string AppID = Request.Params["AppID"];
+            string AppID = "1";
             string RoleID = Request.Params["RoleID"];
-            string IsAdmin = Request.Params["IsAdmin"];
+            string IsAdmin = "1";
             string LoginName = Request.Params["LoginName"];
             string UserPass = Request.Params["UserPass"];
             string UserTrueName = Request.Params["UserTrueName"];

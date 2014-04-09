@@ -23,7 +23,7 @@ h3 {
 .field {
 	margin-bottom: 7px;
 	float: left;
-	width: 500px;
+	width: 550px;
 	line-height: 30px;
 }
 .field span {
@@ -31,6 +31,7 @@ h3 {
 	overflow:hidden;
 	float:right;
 	height:30px;
+    padding-right:80px;
 }
 label {
 	font-family: Arial, Verdana;

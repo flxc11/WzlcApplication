@@ -22,7 +22,7 @@ namespace CNVP.Admin
                 }
                 Context.Session.Clear();
                 Context.Session.Abandon();
-                Response.Redirect("Appsearch.aspx");
+                Response.Redirect("appli1.aspx");
                 Response.End();
             }
         }

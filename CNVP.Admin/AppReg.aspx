@@ -26,50 +26,129 @@
 </style>
 </head>
 <body>
+    <script>
+        function choose(obj) {
+            var _val = obj.options[obj.selectedIndex].value;
+            if (_val == "0") {
+                $("#_typecnt").hide();
+                $("#TypeContent").html("");
+            } else {
+                $.ajax({
+                    type: "post",
+                    dataType: "html",
+                    url: "ajax.aspx?Time=" + (new Date().getTime()),
+                    data: {
+                        Action: "index_type",
+                        value: _val
+                    },
+                    error: function () {
+                        alert("系统通讯异常，请与管理员联系。");
+                    },
+                    success: function (d) {
+                        $("#_typecnt").show();
+                        $("#TypeContent").html(d);
+                    }
+                })
+            }
+        }
+    </script>
     <!--#include file="top.html"-->
     <div class="LCDA_MainArea m0a">
         <div class="w734 fr">
             <div class="InMain">
-                <div class="T">在线注册</div>
+                <div class="T">在线申请</div>
                 <div class="C">
                     <div class="InMainBox">
             <form id="contactform" class="rounded" method="post" action="?action=reg" enctype="multipart/form-data">
+                <div class="field">
+                    <label for="name">申请类型：</label>
+                    <input type="radio" name="app_type" value="0" id="" checked="checked" />个人
+                    <input type="radio" name="app_type" value="1" id="" />单位
+                </div>
             <div class="field">
-            <span class="red">*</span>
+                <span class="red">*</span>
             <label for="name">姓 名：</label>
-            <input type="text" class="input easyui-validatebox" missingMessage="姓名不能为空" name="talname" id="talname" required="true" maxlength="10" />
-            <p class="hint">请输入姓名</p>
+            <input type="text" class="input easyui-validatebox" missingMessage="姓名不能为空" required="true" name="talname" id="talname" maxlength="10" />
+                <p class="hint">请输入姓名</p>
             </div>
             <div class="field">
-            <span class="red">*</span>
+                <span class="red">*</span>
             <label for="name">身份证号码：</label>
-            <input type="text" class="input easyui-validatebox" name="talidcard" id="talidcard"  required="true" missingMessage="身份证号码不能为空" maxlength="18" validtype="checkIDCard"  />
-            <p class="hint">请输入身份证号码</p>
+            <input type="text" class="input easyui-validatebox" required="true" validtype="checkIDCard" missingMessage="身份证号码不能为空" name="talidcard" id="talidcard" maxlength="18"  />
+                <p class="hint">请输入身份证号码</p>
             </div>
             <div class="field">
-            <span class="red">*</span>
+                <span class="red">*</span>
                 <label for="name">手机号码：</label>
-                <input type="text" class="input easyui-validatebox" name="taltel" id="taltel"  required="true" missingMessage="电话或手机不能为空" maxlength="30" validtype="checkPhone"  />
-                <p class="hint">请输入电话或手机</p>
+                <input type="text" class="input easyui-validatebox" missingMessage="手机不能为空" required="true" name="taltel" id="taltel" validtype="checkPhone"  />
+                <p class="hint">请输入手机号码</p>
               </div>
-            <div class="field">
+            <div class="field" style="display:none">
                 <label for="name">验证码：</label>
                 <input type="text" name="CheckCode" id="CheckCode" class="Checkipt" />
                 <input id="btGetCheck" type="button" value="获取验证码" style="width:90px;height:30px; line-height:30px; background:#613916; text-align:center; color:#fff; display:block;cursor:pointer; border:0;" />
                 <div id="GetCheck"><div id="GetCheckText"></div></div>
             </div>
             <div class="field">
-            <span class="red">*</span>
             <label for="name">地址：</label>
-            <input type="text" class="input easyui-validatebox" name="taladdress" id="taladdress" maxlength="100" required="true" missingMessage="地址不能为空"  />
-            <p class="hint">请输入地址</p>
+                <span class="red">*</span>
+            <input type="text" class="input easyui-validatebox" required="true" name="taladdress" id="taladdress" missingMessage="地址不能为空" />
+                <p class="hint">请输入地址</p>
+            </div>
+            <div class="field">
+            <label for="name">电子邮件：</label>
+                <span class="red">*</span>
+            <input type="text" class="input easyui-validatebox" required="true" name="talemail" missingMessage="电子邮件不能为空" id="talemail" validtype="email"  />
+                <p class="hint">请输入电子邮件</p>
             </div>
             <div class="field">
             <span class="red">*</span>
-            <label for="name">电子邮件：</label>
-            <input type="text" class="input easyui-validatebox" name="talemail" id="talemail" maxlength="100" required="true" missingMessage="电子邮件不能为空" validtype="email"  />
-            <p class="hint">请输入电子邮件</p>
-            </div>            <div class="field" style="width:100%;height:auto; text-align:left;"><img src="Lib/images/btnsubmit.png" onclick="checkSubmit()" style="cursor:pointer;margin-left:150px;margin-top:10px;" /></div>
+            <label for="name">档案类型：</label>
+                <select id="AppType" name="AppType" style="width:280px;height:30px;" onchange="choose(this)">
+                    <%=_TypeList %>
+                </select>
+            </div>
+            <div class="field" id="_typecnt" style="display:none;">
+            <label for="name">事项说明：</label>
+                <div id="TypeContent"></div>
+            </div>
+            <div class="field">
+            <span class="red">*</span>
+            <label for="name">申请内容：</label>
+                <textarea name="AppContent" class="input easyui-validatebox" required="true" id="AppContent" style="width:270px;height:100px;overflow:hidden;"></textarea>
+            </div>
+            <div class="field">
+                <label for="name" style="height:50px;">结果需求：</label>
+                <input type="radio" name="app_result" value="0" id="" checked="checked" />仅需档案扫描件发送到邮箱：（填写EMAIL地址、默认登记的EMAIL）<br />
+                <input type="radio" name="app_result" value="1" id="" />需提供档案凭证，请快递到（填定快递地址，并注明快递费到付）
+
+            </div>
+            <div class="field" id="pic1">
+                <span class="red">*</span>
+                <label for="message">身份证正面：</label>
+                <input type="file" class="input fl" id ="mfile0_0"  name="mfile0_0"  />
+                <p class="hint">请上传身份证正面照片</p>
+            </div>
+            <div class="field" id="pic2">
+                <span class="red">*</span>
+                <label for="message">身份证背面：</label>
+                <input type="file" class="input fl" id ="mfile0_1"  name="mfile0_1" />
+                <p class="hint">请上传身份证背面照片</p>
+            </div>
+            <div class="field" style="display:none;" id="pic3">
+                <span class="red">*</span>
+                <label for="message">单位介绍信：</label>
+                <input type="file" class="input fl" id ="mfile0_2"  name="mfile0_2"  />
+                <p class="hint">请上传单位介绍信</p>
+            </div>
+            <div class="field">
+                <label for="message">其它证件：</label>
+                <p id="MyFile0" style="float:left;width:350px;overflow:hidden;margin:0;padding:0;">
+                <input type="file" class="input fl" id ="mfile0_3"  name="mfile0_3" />
+                <input type="button" value="增加" class="fl add1" onclick="addFile('MyFile0')" />
+                </p>
+            </div>
+            <div class="field" style="width:100%;height:auto; text-align:left;"><img src="Lib/images/btnsubmit.png" onclick="checkSubmit()" style="cursor:pointer;margin-left:150px;margin-top:10px;" /></div>
             </form>
                     </div>
                 </div>
@@ -80,7 +159,8 @@
         	<div class="T">网上办事</div>
             <div class="C">
             	<ul>
-                    <li><a href="application.aspx">在线申请</a></li>
+                    <li><a href="application.aspx">立即申请</a></li>
+                    <li><a href="appli2.aspx">查看申请记录</a></li>
             	</ul>
             </div>
         </div>
@@ -94,6 +174,16 @@
     <script src="Lib/js/JScripts.js"></script>
     <script type="text/javascript">//<![CDATA[
         $(function () {
+            var $radio = $("input[type='radio'][name='app_type']");
+            $radio.on("click", function () {
+                if ($(this).val() === "1") {
+                    $("#pic3").show();
+                }
+                if ($(this).val() === "0") {
+                    $("#pic3").hide();
+                    $("#pic3").find("input").attr("value", "");
+                }
+            })
             $("#contactform").attr("action", "?action=reg");
             $.extend($.fn.validatebox.defaults.rules, {
                 checkPhone: {
@@ -122,7 +212,12 @@
             });
         })
         function checkSubmit() {
-            var app_type = $("input[type='radio'][name='app_type']:checked").val();
+            var app_type = $("input[type='radio']:checked").val();
+            //if (/^\s*$/.test($("#CheckCode").val())) {
+            //    alert("请输入验证码！");
+            //    $("#CheckCode").focus();
+            //    return false;
+            //}
             if (/^\s*$/.test($("#talname").val())) {
                 alert("请输入姓名");
                 $("#talname").focus();
@@ -138,11 +233,6 @@
                 $("#taltel").focus();
                 return false;
             }
-            if (/^\s*$/.test($("#CheckCode").val())) {
-                alert("请输入验证码");
-                $("#CheckCode").focus();
-                return false;
-            }
             if (/^\s*$/.test($("#taladdress").val())) {
                 alert("请输入地址");
                 $("#taladdress").focus();
@@ -153,6 +243,33 @@
                 $("#talemail").focus();
                 return false;
             }
+            if ($("#AppType").val() == 0) {
+                alert("请选择档案类型");
+                $("#AppType").focus();
+                return false;
+            }
+            if (/^\s*$/.test($("#AppContent").val())) {
+                alert("请输入申请事项！");
+                $("#AppContent").focus();
+                return false;
+            }
+            if (/^\s*$/.test($("#mfile0_0").val())) {
+                alert("请上传身份证正面照片！");
+                $("#mfile0_0").focus();
+                return false;
+            }
+            if (/^\s*$/.test($("#mfile0_1").val())) {
+                alert("请上传身份证背面照片！");
+                $("#mfile0_1").focus();
+                return false;
+            }
+            if (app_type === "1") {
+                if (/^\s*$/.test($("#mfile0_2").val())) {
+                    alert("请上传单位介绍信图片！");
+                    $("#mfile0_2").focus();
+                    return false;
+                }
+            }
             if ($("#contactform").form("validate")) {
                 $("#contactform").submit();
             } else {
@@ -162,27 +279,7 @@
 
         $("#btGetCheck").click(function () {
             var $userPhone = $("#taltel");
-            if (/^\s*$/.test($("#talname").val())) {
-                alert("请输入姓名");
-                $("#talname").focus();
-                return false;
-            }else if (/^\s*$/.test($("#talidcard").val())) {
-                alert("请输入身份证号码");
-                $("#talidcard").focus();
-                return false;
-            }else if (/^\s*$/.test($("#taltel").val())) {
-                alert("请输入电话号码");
-                $("#taltel").focus();
-                return false;
-            } else  if (/^\s*$/.test($("#taladdress").val())) {
-                alert("请输入地址");
-                $("#taladdress").focus();
-                return false;
-            }else if (/^\s*$/.test($("#talemail").val())) {
-                alert("请输入电子邮件");
-                $("#talemail").focus();
-                return false;
-            }else if (!/^1[358]{1}[0-9]{9}/.test($userPhone.val())) {
+            if (!/^1[358]{1}[0-9]{9}/.test($userPhone.val())) {
                 alert("手机号码格式有误，请重新输入!");
                 $userPhone.focus();
                 return false;
@@ -226,6 +323,31 @@
                     time(o)
                 },
             1000)
+            }
+        }
+        function addFile(id) {
+            var inputstr = "";
+            var i = 1;
+            var index = id.substring(6);
+
+            while (true) {
+                if (document.getElementById("mfile" + index + "_" + i) == null) break;
+                else i++;
+            }
+            console.debug(i);
+            var inputid = "mfile" + index + "_" + i;
+            var str = "<br /><INPUT type=\"file\" class=\"input fl\" id=\"" + inputid + "\" NAME=\"" + inputid + "\" /><INPUT id=\"r" + inputid + "\" type=\"button\" class=\"fl add1\" value=\"删除\" onclick=removeFile(\"" + inputid + "\") />";
+            document.getElementById(id).insertAdjacentHTML("beforeEnd", str);
+
+        }
+        function removeFile(id) {
+            var obj = document.getElementById(id);
+            var obj1 = document.getElementById("r" + id);
+            if (obj != null && obj1 != null) {
+                //obj.removeNode(true);
+                //obj1.removeNode(true);
+                obj.parentNode.removeChild(obj);
+                obj1.parentNode.removeChild(obj1);
             }
         }
 </script>

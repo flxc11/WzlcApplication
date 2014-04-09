@@ -58,10 +58,11 @@ namespace CNVP.Data
         #region 管理员回复
         public void AppReply(Model.Application model)
         {
-            string StrSql = "update " + DbConfig.Prefix + "Application set AppReply=@AppReply, IsAudit=@IsAudit where ID=@ID";
+            string StrSql = "update " + DbConfig.Prefix + "Application set AppReply=@AppReply, IsAudit=@IsAudit,AuditMan=@AuditMan where ID=@ID";
             IDataParameter[] Param = new IDataParameter[] {
                 DbHelper.MakeParam("@AppReply", model.AppReply),
                 DbHelper.MakeParam("@IsAudit", model.IsAudit),
+                DbHelper.MakeParam("@AuditMan", model.AuditMan),
                 DbHelper.MakeParam("@ID", model.ID)
             };
             DbHelper.ExecuteNonQuery(StrSql, Param);

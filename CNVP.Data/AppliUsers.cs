@@ -24,6 +24,21 @@ namespace CNVP.Data
             DbHelper.ExecuteNonQuery(StrSql, Param);
         }
 
+        public int AddAppUsers1(Model.AppliUsers Model)
+        {
+            string StrSql = "insert into " + DbConfig.Prefix +
+                "AppliUsers (AppName, AppCardID, AppPhone, AppAddress, AppEmail, PostTime) values (@AppName, @AppCardID, @AppPhone, @AppAddress, @AppEmail, @PostTime)";
+            IDataParameter[] Param = new IDataParameter[] {
+                DbHelper.MakeParam("@AppName", Model.AppName),
+                DbHelper.MakeParam("@AppPhone", Model.AppPhone),
+                DbHelper.MakeParam("@AppCardID", Model.AppCardID),
+                DbHelper.MakeParam("@AppAddress", Model.AppAddress),
+                DbHelper.MakeParam("@AppEmail", Model.AppEmail),
+                DbHelper.MakeParam("@PostTime", Model.PostTime)
+            };
+            DbHelper.ExecuteNonQuery(StrSql, Param);
+            return DbHelper.GetMaxID("ID", "HX_AppliUsers");
+        }
         public void Del(int ID)
         {
             string StrSql = "Delete from " + DbConfig.Prefix + "AppliUsers Where ID=@ID";

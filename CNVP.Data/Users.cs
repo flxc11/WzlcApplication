@@ -330,5 +330,40 @@ namespace CNVP.Data
             DbHelper.ExecuteSqlTran(StrSql, Param);
         }
         #endregion
+
+        #region 获取全部管理员
+        public List<Model.Users> GetUserList()
+        {
+            List<Model.Users> model = new List<Model.Users>();
+            string StrSql = "select * from " + DbConfig.Prefix + "Users Order By UserID";
+            model = DbHelper.ExecuteTable<Model.Users>(StrSql);
+            return model;
+        }
+        #endregion
+
+        #region 获取全部管理员的手机号码
+        public string  GetUserphone()
+        {
+            string str = string.Empty;
+
+            Data.Users bll = new Users();
+            List<Model.Users> model = bll.GetUserList();
+            if (model != null)
+            {
+                foreach( var item in model )
+                {
+                    if (!string.IsNullOrEmpty(item.UserMobile))
+                    {
+                        str += item.UserMobile + ",";
+                    }
+                }
+            }
+            if (str.Length > 0)
+            {
+                str = str.Substring(0, str.Length - 1);
+            }
+            return str;
+        }
+        #endregion
     }
 }

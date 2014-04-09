@@ -67,6 +67,7 @@
     <Content Include="Appli2.aspx" />
     <Content Include="Application.aspx" />
     <Content Include="Appli\AppEdit.aspx" />
+    <Content Include="Appli\AppListSearch.aspx" />
     <Content Include="Appli\List.aspx" />
     <Content Include="Appli\NoticeAdd.aspx" />
     <Content Include="Appli\NoticeEdit.aspx" />
@@ -77,6 +78,56 @@
     <Content Include="AppReg.aspx" />
     <Content Include="appsearch.aspx" />
     <Content Include="bottom.html" />
+    <Content Include="common\Calendar\Css\border-radius.css" />
+    <Content Include="common\Calendar\Css\gold\brushed-steel.jpg" />
+    <Content Include="common\Calendar\Css\gold\coolbg.png" />
+    <Content Include="common\Calendar\Css\gold\gold.css" />
+    <Content Include="common\Calendar\Css\gold\gold.jpg" />
+    <Content Include="common\Calendar\Css\img\cool-bg-hard-inv.png" />
+    <Content Include="common\Calendar\Css\img\cool-bg-hard.png" />
+    <Content Include="common\Calendar\Css\img\cool-bg-inv.png" />
+    <Content Include="common\Calendar\Css\img\cool-bg.png" />
+    <Content Include="common\Calendar\Css\img\drop-down.gif" />
+    <Content Include="common\Calendar\Css\img\drop-up.gif" />
+    <Content Include="common\Calendar\Css\img\nav-left-x2.gif" />
+    <Content Include="common\Calendar\Css\img\nav-left.gif" />
+    <Content Include="common\Calendar\Css\img\nav-right-x2.gif" />
+    <Content Include="common\Calendar\Css\img\nav-right.gif" />
+    <Content Include="common\Calendar\Css\img\time-down.png" />
+    <Content Include="common\Calendar\Css\img\time-up.png" />
+    <Content Include="common\Calendar\Css\jscal2.css" />
+    <Content Include="common\Calendar\Css\matrix\matrix.css" />
+    <Content Include="common\Calendar\Css\matrix\nav-left-x2.gif" />
+    <Content Include="common\Calendar\Css\matrix\nav-left.gif" />
+    <Content Include="common\Calendar\Css\matrix\nav-right-x2.gif" />
+    <Content Include="common\Calendar\Css\matrix\nav-right.gif" />
+    <Content Include="common\Calendar\Css\reduce-spacing.css" />
+    <Content Include="common\Calendar\Css\shadow-b.png" />
+    <Content Include="common\Calendar\Css\steel\brushed-steel.jpg" />
+    <Content Include="common\Calendar\Css\steel\brushed-steel.png" />
+    <Content Include="common\Calendar\Css\steel\coolbg.png" />
+    <Content Include="common\Calendar\Css\steel\steel.css" />
+    <Content Include="common\Calendar\Css\steel\steel.jpg" />
+    <Content Include="common\Calendar\Css\win2k\win2k.css" />
+    <Content Include="common\Calendar\Js\jscal2.js" />
+    <Content Include="common\Calendar\Js\lang\ca.js" />
+    <Content Include="common\Calendar\Js\lang\cn.js" />
+    <Content Include="common\Calendar\Js\lang\cz.js" />
+    <Content Include="common\Calendar\Js\lang\de.js" />
+    <Content Include="common\Calendar\Js\lang\en.js" />
+    <Content Include="common\Calendar\Js\lang\es.js" />
+    <Content Include="common\Calendar\Js\lang\fr.js" />
+    <Content Include="common\Calendar\Js\lang\hr.js" />
+    <Content Include="common\Calendar\Js\lang\it.js" />
+    <Content Include="common\Calendar\Js\lang\jp.js" />
+    <Content Include="common\Calendar\Js\lang\nl.js" />
+    <Content Include="common\Calendar\Js\lang\pl.js" />
+    <Content Include="common\Calendar\Js\lang\pt.js" />
+    <Content Include="common\Calendar\Js\lang\ro.js" />
+    <Content Include="common\Calendar\Js\lang\ru.js" />
+    <Content Include="common\Calendar\Js\lang\sk.js" />
+    <Content Include="common\Calendar\Js\lang\sv.js" />
+    <Content Include="common\Calendar\Js\unicode-letter.js" />
     <Content Include="EditHX\Asp\Browse.asp" />
     <Content Include="EditHX\Asp\Config.asp" />
     <Content Include="EditHX\Asp\I.Asp" />
@@ -2209,10 +2260,12 @@
     <Content Include="Lib\ligerUI\skins\Aqua\images\controls\dateeditor-bar-bg.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\controls\dateeditor-header-bg.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\controls\radio.gif" />
+    <Content Include="Lib\ligerUI\skins\Aqua\images\dateeditor\date.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\dateeditor\icon-first.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\dateeditor\icon-last.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\dateeditor\icon-next.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\dateeditor\icon-prev.gif" />
+    <Content Include="Lib\ligerUI\skins\Aqua\images\dateeditor\icon-unselect.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\form\verify-corner.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\grid\grid-checkbox-checked.gif" />
     <Content Include="Lib\ligerUI\skins\Aqua\images\grid\grid-checkbox.gif" />
@@ -2758,6 +2811,13 @@
     </Compile>
     <Compile Include="Appli\AppEdit.aspx.designer.cs">
       <DependentUpon>AppEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Appli\AppListSearch.aspx.cs">
+      <DependentUpon>AppListSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Appli\AppListSearch.aspx.designer.cs">
+      <DependentUpon>AppListSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Appli\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

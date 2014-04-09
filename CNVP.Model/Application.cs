@@ -46,5 +46,9 @@ namespace CNVP.Model
         /// 申请事项
         /// </summary>
         public string AppThings { get; set; }
+        /// <summary>
+        /// 审核人
+        /// </summary>
+        public string AuditMan { get; set; }
     }
 }

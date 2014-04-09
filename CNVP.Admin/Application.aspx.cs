@@ -80,28 +80,22 @@ namespace CNVP.Admin
                     model.AppThings = AppThings;
                     model.IsAudit = "0";
 
-                    DataTable dt = DbHelper.ExecuteTable("select UserName, UserMobile from HX_Users Where UserName='admin'");
+                    Data.Users _users = new Data.Users();
+                    string _userPhone = _users.GetUserphone();
+                    string _content = "您好！鹿城档案地方志网的管理员，有一项新的查调申请，需您处理！退订回复TD【鹿城档案地方志网】";
+                    Ajax _ajax = new Ajax();
+                    if (_ajax.SendSms1(_userPhone, _content) == "0")
                     {
-                        if (dt != null && dt.Rows.Count > 0)
-                        {
-                            string userPhone = dt.Rows[0]["UserMobile"].ToString();
-                            //string _content = "您好，鹿城档案地方志网的管理员，在 " + DateTime.Now.ToString("yyyy-MM-dd") + " ,有一条新的申请，请及时处理！退订回复TD【鹿城档案地方志网】";
-                            //string rlt = SendSms1(userPhone, _content);
-                            Response.Write("<script src='Lib/jquery/jquery-1.8.0.min.js'></script>");
-                            Response.Write("<script>");
-                            Response.Write("$.ajax({type:'post',dataType:'json',url:'Ajax.aspx?Action=Sms1&Time=' + (new Date().getTime()),data:{UserPhone:" + userPhone + "},error:function(){},success:function(d){ if (d.rslt == 0){");
-                            bll.AddApplication(model);
-                            Response.Write("alert('您的申请已提交，请等待管理员审核！');window.location.href='Application.aspx';");
-                            
-                            Response.Write("}else{");
-                            Response.Write("alert('申请提交有误，请重新提交！');window.location.href='Application.aspx';");
-                            Response.Write("}");
-                            Response.Write("}})");
-                            Response.Write("</script>");
-                            Response.End();
-                        }
-
+                        bll.AddApplication(model);
+                        Response.Write("<script>alert('您的申请已提交，请等待管理员审核！');window.location.href='Application.aspx';</script>");
+                        Response.End();
                     }
+                    else
+                    {
+                        Response.Write("<script>alert('申请提交有误，请重新提交！');window.location.href='Application.aspx';");
+                        Response.Write("</script>");
+                        Response.End();
+                    }                   
                     
                 }
             }

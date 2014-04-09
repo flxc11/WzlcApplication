@@ -36,11 +36,11 @@
                     <%=_Content %>
 
                         <div class="agree" style="text-align:center;">
-                <input type="button" name="button" id="submit" value="同意并开始投票" style="width:130px;height:30px; line-height:30px; text-align:center; border:0; cursor:pointer;" onclick="jump()" /></div>
+                <input type="button" name="button" id="submit" value="同意并开始申请" style="width:130px;height:30px; line-height:30px; text-align:center; border:0; cursor:pointer;" onclick="jump()" /></div>
 
                     </div>
                     <script type="text/javascript">
-                        var wait = 15; //设置秒数(单位秒)
+                        var wait = 10; //设置秒数(单位秒)
                         var secs = 0;
                         for (var i = 1; i <= wait; i++) {
                             window.setTimeout("stimer(" + i + ")", i * 1000);
